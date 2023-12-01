@@ -13,128 +13,129 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Toast extends JFrame{
-	
-	public void Play(String file) throws LineUnavailableException, UnsupportedAudioFileException, IOException
-	{
-	    AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(file));
-	    Clip clip = AudioSystem.getClip();
-	    clip.open(inputStream);
-	    clip.start();
-	}
-	
+public class Toast extends JFrame {
+
+    public void Play(String file) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(file));
+        Clip clip = AudioSystem.getClip();
+        clip.open(inputStream);
+        clip.start();
+    }
+
     Font font1 = new Font(Font.MONOSPACED, Font.BOLD, 13);
     Font font2 = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 25);
-    
-    int count; int total=0; int col=0; int row=0; String contents = "";
-    
-	public Toast () {
-		JFrame frame = new JFrame("»ó»óÅä½ºÆ®_Å°¿À½ºÅ©");
-        
+
+    int count;
+    int total = 0;
+    int col = 0;
+    int row = 0;
+    String contents = "";
+
+    public Toast() {
+        JFrame frame = new JFrame("ìƒìƒí† ìŠ¤íŠ¸_í‚¤ì˜¤ìŠ¤í¬");
+
         Panel NorthPanel = new Panel();
         NorthPanel.setBackground(Color.orange);
         NorthPanel.setLayout(new FlowLayout());
-        
+
         Label highbar = new Label();
-        highbar.setText("<»ó»ó Åä½ºÆ® Å°¿À½ºÅ©>");
+        highbar.setText("<ìƒìƒ í† ìŠ¤íŠ¸ í‚¤ì˜¤ìŠ¤í¬>");
         highbar.setFont(font2);
-		NorthPanel.add(highbar);
-		
-		
-		Panel CenterPanel = new Panel();
-		CenterPanel.setLayout(null);
-		CenterPanel.setBackground(Color.LIGHT_GRAY);
-		String menu[] = {"ÇÜÄ¡Áî Åä½ºÆ®", "<HTML><body>ÇÜ½ºÆä¼È<br>Åä½ºÆ®</body></HTML>", 
-				"<HTML><body>¼Ò½ÃÁö<br>Åä½ºÆ®</body></HTML>", "<HTML><body>Ã»Æ÷µµ<br>¿¡ÀÌµå</body></HTML>", 
-				"<HTML><body><center>ÀÚ¸ù<br>¿¡ÀÌµå</center></body></HTML>",
-				"<HTML><body><center>·¹¸ó<br>¿¡ÀÌµå</center></body></HTML>", "+ÇÜ Ãß°¡","°¨ÀÚ Åä½ºÆ®",
-				"<HTML><body>º£ÀÌÄÁ<br>Åä½ºÆ®</body></HTML>", "»õ¿ì Åä½ºÆ®","¾Æ¸Ş¸®Ä«³ë","Ä«Æä¶ó¶¼","Ä«Æä¸ğÄ«","+°¨ÀÚ Ãß°¡",
-				"°¥¸¯ Åä½ºÆ®", "<HTML><body>ºÒ°í±â<br>Åä½ºÆ®</body></HTML>","<HTML><body><center>½ºÅ×ÀÌÅ©<br>Åä½ºÆ®</center></body></HTML>",
-				"<HTML><body><center>µş±â<br>½º¹«µğ</center></body></HTML>", "<HTML><body><center>ÃÊÄÚ<br>½º¹«µğ</center></body></HTML>",
-				"<HTML><body>¹Ù³ª³ª<br>½º¹«µğ</body></HTML>", "+Ä¡Áî Ãß°¡"};
-		
-		String menu_txt[] = {"ÇÜÄ¡Áî Åä½ºÆ®", "ÇÜ½ºÆä¼È Åä½ºÆ®", "¼Ò½ÃÁö Åä½ºÆ®", "Ã»Æ÷µµ ¿¡ÀÌµå", 
-				"ÀÚ¸ù ¿¡ÀÌµå","·¹¸ó ¿¡ÀÌµå", "+ÇÜ Ãß°¡","°¨ÀÚ Åä½ºÆ®","º£ÀÌÄÁ Åä½ºÆ®", "»õ¿ì Åä½ºÆ®",
-				"¾Æ¸Ş¸®Ä«³ë","Ä«Æä¶ó¶¼","Ä«Æä¸ğÄ«","+°¨ÀÚ Ãß°¡","°¥¸¯ Åä½ºÆ®", "ºÒ°í±â Åä½ºÆ®","½ºÅ×ÀÌÅ© Åä½ºÆ®",
-				"µş±â ½º¹«µğ", "ÃÊÄÚ ½º¹«µğ","¹Ù³ª³ª ½º¹«µğ", "+Ä¡Áî Ãß°¡"};
-		
+        NorthPanel.add(highbar);
+
+
+        Panel CenterPanel = new Panel();
+        CenterPanel.setLayout(null);
+        CenterPanel.setBackground(Color.LIGHT_GRAY);
+        String menu[] = {"í–„ì¹˜ì¦ˆ í† ìŠ¤íŠ¸", "<HTML><body>í–„ìŠ¤í˜ì…œ<br>í† ìŠ¤íŠ¸</body></HTML>",
+                "<HTML><body>ì†Œì‹œì§€<br>í† ìŠ¤íŠ¸</body></HTML>", "<HTML><body>ì²­í¬ë„<br>ì—ì´ë“œ</body></HTML>",
+                "<HTML><body><center>ìëª½<br>ì—ì´ë“œ</center></body></HTML>",
+                "<HTML><body><center>ë ˆëª¬<br>ì—ì´ë“œ</center></body></HTML>", "+í–„ ì¶”ê°€", "ê°ì í† ìŠ¤íŠ¸",
+                "<HTML><body>ë² ì´ì»¨<br>í† ìŠ¤íŠ¸</body></HTML>", "ìƒˆìš° í† ìŠ¤íŠ¸", "ì•„ë©”ë¦¬ì¹´ë…¸", "ì¹´í˜ë¼ë–¼", "ì¹´í˜ëª¨ì¹´", "+ê°ì ì¶”ê°€",
+                "ê°ˆë¦­ í† ìŠ¤íŠ¸", "<HTML><body>ë¶ˆê³ ê¸°<br>í† ìŠ¤íŠ¸</body></HTML>", "<HTML><body><center>ìŠ¤í…Œì´í¬<br>í† ìŠ¤íŠ¸</center></body></HTML>",
+                "<HTML><body><center>ë”¸ê¸°<br>ìŠ¤ë¬´ë””</center></body></HTML>", "<HTML><body><center>ì´ˆì½”<br>ìŠ¤ë¬´ë””</center></body></HTML>",
+                "<HTML><body>ë°”ë‚˜ë‚˜<br>ìŠ¤ë¬´ë””</body></HTML>", "+ì¹˜ì¦ˆ ì¶”ê°€"};
+
+        String menu_txt[] = {"í–„ì¹˜ì¦ˆ í† ìŠ¤íŠ¸", "í–„ìŠ¤í˜ì…œ í† ìŠ¤íŠ¸", "ì†Œì‹œì§€ í† ìŠ¤íŠ¸", "ì²­í¬ë„ ì—ì´ë“œ",
+                "ìëª½ ì—ì´ë“œ", "ë ˆëª¬ ì—ì´ë“œ", "+í–„ ì¶”ê°€", "ê°ì í† ìŠ¤íŠ¸", "ë² ì´ì»¨ í† ìŠ¤íŠ¸", "ìƒˆìš° í† ìŠ¤íŠ¸",
+                "ì•„ë©”ë¦¬ì¹´ë…¸", "ì¹´í˜ë¼ë–¼", "ì¹´í˜ëª¨ì¹´", "+ê°ì ì¶”ê°€", "ê°ˆë¦­ í† ìŠ¤íŠ¸", "ë¶ˆê³ ê¸° í† ìŠ¤íŠ¸", "ìŠ¤í…Œì´í¬ í† ìŠ¤íŠ¸",
+                "ë”¸ê¸° ìŠ¤ë¬´ë””", "ì´ˆì½” ìŠ¤ë¬´ë””", "ë°”ë‚˜ë‚˜ ìŠ¤ë¬´ë””", "+ì¹˜ì¦ˆ ì¶”ê°€"};
+
 		/*
-		 	Åä½ºÆ® 0 1 2 7 8 9 14 15 16
-			Ä¿ÇÇ 10 11 12
-			¿¡ÀÌµå 3 4 5
-			½º¹«µğ 17 18 19
+		 	í† ìŠ¤íŠ¸ 0 1 2 7 8 9 14 15 16
+			ì»¤í”¼ 10 11 12
+			ì—ì´ë“œ 3 4 5
+			ìŠ¤ë¬´ë”” 17 18 19
 		*/
-		
-		int price[] = {2000, 2500, 2500, 2700, 2700,2700, 500, 2500, 
-				2500, 2500, 2700,3300,3500,700,2300, 2300, 2500,
-				3500,3500,3500,300};
-		JButton bt_menu[] = new JButton[menu.length];
+
+        int price[] = {2000, 2500, 2500, 2700, 2700, 2700, 500, 2500,
+                2500, 2500, 2700, 3300, 3500, 700, 2300, 2300, 2500,
+                3500, 3500, 3500, 300};
+        JButton bt_menu[] = new JButton[menu.length];
         TextField num[] = new TextField[menu.length];
         Button minus[] = new Button[menu.length];
         Button plus[] = new Button[menu.length];
         JButton ok[] = new JButton[menu.length];
         Label won[] = new Label[menu.length];
         Label name[] = new Label[menu.length];
-        Color[] color = {new Color(190,170,50), new Color(150, 100, 0), new Color(255,255,0), new Color(173, 52, 125)};
-        
-        bt_menu[0] = new JButton(new ImageIcon("./img/ÇÜÄ¡Áî.png"));
-        bt_menu[1] = new JButton(new ImageIcon("./img/ÇÜ½ºÆä¼È.png"));
-        bt_menu[2] = new JButton(new ImageIcon("./img/¼Ò¼¼Áö.png"));
-        bt_menu[3] = new JButton(new ImageIcon("./img/Ã»Æ÷µµ.png"));
-        bt_menu[4] = new JButton(new ImageIcon("./img/ÀÚ¸ù.png"));
-        bt_menu[5] = new JButton(new ImageIcon("./img/·¹¸ó.png"));
+        Color[] color = {new Color(190, 170, 50), new Color(150, 100, 0), new Color(255, 255, 0), new Color(173, 52, 125)};
+
+        bt_menu[0] = new JButton(new ImageIcon("./img/í–„ì¹˜ì¦ˆ.png"));
+        bt_menu[1] = new JButton(new ImageIcon("./img/í–„ìŠ¤í˜ì…œ.png"));
+        bt_menu[2] = new JButton(new ImageIcon("./img/ì†Œì„¸ì§€.png"));
+        bt_menu[3] = new JButton(new ImageIcon("./img/ì²­í¬ë„.png"));
+        bt_menu[4] = new JButton(new ImageIcon("./img/ìëª½.png"));
+        bt_menu[5] = new JButton(new ImageIcon("./img/ë ˆëª¬.png"));
         bt_menu[6] = new JButton(new ImageIcon("./img/ham.jpg"));
-        bt_menu[7] = new JButton(new ImageIcon("./img/°¨ÀÚ.png"));
-        bt_menu[8] = new JButton(new ImageIcon("./img/º£ÀÌÄÁ.png"));
-        bt_menu[9] = new JButton(new ImageIcon("./img/»õ¿ì.png"));
-        bt_menu[10] = new JButton(new ImageIcon("./img/¾Æ¸Ş¸®Ä«³ë.jpg"));
-        bt_menu[11] = new JButton(new ImageIcon("./img/Ä«Æä¶ó¶¼.jpg"));
-        bt_menu[12] = new JButton(new ImageIcon("./img/Ä«Æä¸ğÄ«.jpg"));
+        bt_menu[7] = new JButton(new ImageIcon("./img/ê°ì.png"));
+        bt_menu[8] = new JButton(new ImageIcon("./img/ë² ì´ì»¨.png"));
+        bt_menu[9] = new JButton(new ImageIcon("./img/ìƒˆìš°.png"));
+        bt_menu[10] = new JButton(new ImageIcon("./img/ì•„ë©”ë¦¬ì¹´ë…¸.jpg"));
+        bt_menu[11] = new JButton(new ImageIcon("./img/ì¹´í˜ë¼ë–¼.jpg"));
+        bt_menu[12] = new JButton(new ImageIcon("./img/ì¹´í˜ëª¨ì¹´.jpg"));
         bt_menu[13] = new JButton(new ImageIcon("./img/potato.jpg"));
-        bt_menu[14] = new JButton(new ImageIcon("./img/°¥¸¯.png"));
-        bt_menu[15] = new JButton(new ImageIcon("./img/ºÒ°í±â.png"));
-        bt_menu[16] = new JButton(new ImageIcon("./img/½ºÅ×ÀÌÅ©.png"));
-        bt_menu[17] = new JButton(new ImageIcon("./img/µş±â½º¹«µğ.jpg"));
-        bt_menu[18] = new JButton(new ImageIcon("./img/ÃÊÄÚ½º¹«µğ.jpg"));
-        bt_menu[19] = new JButton(new ImageIcon("./img/¹Ù³ª³ª½º¹«µğ.jpg"));
+        bt_menu[14] = new JButton(new ImageIcon("./img/ê°ˆë¦­.png"));
+        bt_menu[15] = new JButton(new ImageIcon("./img/ë¶ˆê³ ê¸°.png"));
+        bt_menu[16] = new JButton(new ImageIcon("./img/ìŠ¤í…Œì´í¬.png"));
+        bt_menu[17] = new JButton(new ImageIcon("./img/ë”¸ê¸°ìŠ¤ë¬´ë””.jpg"));
+        bt_menu[18] = new JButton(new ImageIcon("./img/ì´ˆì½”ìŠ¤ë¬´ë””.jpg"));
+        bt_menu[19] = new JButton(new ImageIcon("./img/ë°”ë‚˜ë‚˜ìŠ¤ë¬´ë””.jpg"));
         bt_menu[20] = new JButton(new ImageIcon("./img/cheese.jpg"));
-        
+
         for (int i = 0; i < menu.length; i++) {
-        	if(i<7) {
-        		bt_menu[i].setBounds(25 + i * 150, 40, 100, 100);
-        	}
-        	else if(i<14) {
-        		bt_menu[i].setBounds(25 + (i - 7) * 150, 250, 100, 100);
-        		
-        	}
-        	else {
-        		bt_menu[i].setBounds(25 + (i - 14) * 150, 470, 100, 100);
-        	}
-        	
-        	name[i] = new Label(menu_txt[i]);
-        	name[i].setFont(font1);
-        	name[i].setBounds(bt_menu[i].getX()-3, bt_menu[i].getY() - 20, 115, 20);
-        	
-        	num[i] = new TextField("0");
+            if (i < 7) {
+                bt_menu[i].setBounds(25 + i * 150, 40, 100, 100);
+            } else if (i < 14) {
+                bt_menu[i].setBounds(25 + (i - 7) * 150, 250, 100, 100);
+
+            } else {
+                bt_menu[i].setBounds(25 + (i - 14) * 150, 470, 100, 100);
+            }
+
+            name[i] = new Label(menu_txt[i]);
+            name[i].setFont(font1);
+            name[i].setBounds(bt_menu[i].getX() - 3, bt_menu[i].getY() - 20, 115, 20);
+
+            num[i] = new TextField("0");
             num[i].setBackground(Color.white);
             num[i].setEditable(false);
             num[i].setBounds(bt_menu[i].getX() + 30, bt_menu[i].getY() + 130, 40, 20);
-            
+
             minus[i] = new Button("-");
             minus[i].setBounds(bt_menu[i].getX(), num[i].getY(), 20, 20);
             minus[i].setEnabled(true);
-            
+
             plus[i] = new Button("+");
             plus[i].setBounds(bt_menu[i].getX() + (100 - 20), num[i].getY(), 20, 20);
             plus[i].setEnabled(true);
-            
-            won[i] = new Label(price[i] + "¿ø");
+
+            won[i] = new Label(price[i] + "ì›");
             won[i].setBounds(bt_menu[i].getX() + 30, num[i].getY() - 25, 100, 20);
-            
-            ok[i] = new JButton("È®ÀÎ");
+
+            ok[i] = new JButton("í™•ì¸");
             ok[i].setBounds(bt_menu[i].getX(), num[i].getY() + 30, 100, 20);
             ok[i].setEnabled(false);
-            
+
             CenterPanel.add(name[i]);
             CenterPanel.add(bt_menu[i]);
             CenterPanel.add(num[i]);
@@ -143,168 +144,162 @@ public class Toast extends JFrame{
             CenterPanel.add(won[i]);
             CenterPanel.add(ok[i]);
         }
-        
+
         bt_menu[0].setBackground(color[0]);
-    	bt_menu[1].setBackground(color[0]);
-    	bt_menu[2].setBackground(color[0]);
+        bt_menu[1].setBackground(color[0]);
+        bt_menu[2].setBackground(color[0]);
 
-    	bt_menu[7].setBackground(color[0]);
-    	bt_menu[8].setBackground(color[0]);
-    	bt_menu[9].setBackground(color[0]);
+        bt_menu[7].setBackground(color[0]);
+        bt_menu[8].setBackground(color[0]);
+        bt_menu[9].setBackground(color[0]);
 
-    	bt_menu[14].setBackground(color[0]);
-    	bt_menu[15].setBackground(color[0]);
-    	bt_menu[16].setBackground(color[0]);
+        bt_menu[14].setBackground(color[0]);
+        bt_menu[15].setBackground(color[0]);
+        bt_menu[16].setBackground(color[0]);
 
         Panel SouthPanel = new Panel();
         TextArea txt = new TextArea("");
-        
-        String[] [] data = new String[0][0];
-        String[] title = {"»óÇ°¸í","´Ü°¡","¼ö·®","ÇÕ°è", "ÃÑ ±İ¾×"};
+
+        String[][] data = new String[0][0];
+        String[] title = {"ìƒí’ˆëª…", "ë‹¨ê°€", "ìˆ˜ëŸ‰", "í•©ê³„", "ì´ ê¸ˆì•¡"};
         DefaultTableModel model = new DefaultTableModel(data, title);
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(1150,200));
+        scrollPane.setPreferredSize(new Dimension(1150, 200));
         SouthPanel.add(scrollPane);
 
-        
-	    Panel SelectPanel = new Panel();
-	    SelectPanel.setLayout(new GridLayout(3,1,50,0));
-	    JButton order[] = new JButton[3];
-	   
-	    order[0] = new JButton(new ImageIcon("./img/close.png"));
-	    order[1] = new JButton(new ImageIcon("./img/reset.png"));
-	    order[2] = new JButton(new ImageIcon("./img/buy.png"));
-	    order[0].setBackground(Color.WHITE);
-	    order[1].setBackground(Color.WHITE);
-	    order[2].setBackground(Color.WHITE);
-	    SelectPanel.add(order[0]);
-	    SelectPanel.add(order[1]);
-	    SelectPanel.add(order[2]);
-	   
-	    // ´İ±â ¹öÆ°
-	    order[0].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.exit(0);
-			}
-	    });
-	    
-        // ÃÊ±âÈ­ ¹öÆ°
-        order[1].addActionListener(new ActionListener() {
- 
+
+        Panel SelectPanel = new Panel();
+        SelectPanel.setLayout(new GridLayout(3, 1, 50, 0));
+        JButton order[] = new JButton[3];
+
+        order[0] = new JButton(new ImageIcon("./img/close.png"));
+        order[1] = new JButton(new ImageIcon("./img/reset.png"));
+        order[2] = new JButton(new ImageIcon("./img/buy.png"));
+        order[0].setBackground(Color.WHITE);
+        order[1].setBackground(Color.WHITE);
+        order[2].setBackground(Color.WHITE);
+        SelectPanel.add(order[0]);
+        SelectPanel.add(order[1]);
+        SelectPanel.add(order[2]);
+
+        // ë‹«ê¸° ë²„íŠ¼
+        order[0].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	try {
-					Play("sound/reset.wav");
-				} catch (LineUnavailableException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (UnsupportedAudioFileException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-            	model.setNumRows(0); //ÁÖ¹® ³»¿ª ÃÊ±âÈ­
-            	txt.setText("");
-            	total=0;
+                // TODO Auto-generated method stub
+                System.exit(0);
             }
         });
- 
-        // ÁÖ¹®¹öÆ°
-        order[2].addActionListener(new ActionListener() {
- 
+
+        // ì´ˆê¸°í™” ë²„íŠ¼
+        order[1].addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-            	
-            	int answer = JOptionPane.showConfirmDialog(null, "ÁÖ¹®ÇÏ½Ã°Ú½À´Ï±î?", "Order",JOptionPane.YES_NO_OPTION);
-            	if(answer == JOptionPane.YES_OPTION)
-            	{
-            		if(total==0)
-            		{
-            			try {
-							Play("sound/error.wav");
-						} catch (LineUnavailableException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (UnsupportedAudioFileException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-            			JOptionPane.showMessageDialog(null, "¼±ÅÃ Ç×¸ñÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
-            		}
+                try {
+                    Play("sound/reset.wav");
+                } catch (LineUnavailableException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (UnsupportedAudioFileException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                model.setNumRows(0); //ì£¼ë¬¸ ë‚´ì—­ ì´ˆê¸°í™”
+                txt.setText("");
+                total = 0;
+            }
+        });
 
-                	else {
-                		for(int i=0; i<table.getRowCount(); i++) {
-                			txt.append(table.getValueAt(i, 0)+" "+table.getValueAt(i, 1)+" X "+table.getValueAt(i, 2)+"°³\n");
-                		}
-                		
-                		contents = txt.toString();
-                		if(!contents.contains("Åä½ºÆ®")&&contents.contains("Ãß°¡"))
-                		{
-                			try {
-    							Play("sound/error.wav");
-    						} catch (LineUnavailableException e1) {
-    							// TODO Auto-generated catch block
-    							e1.printStackTrace();
-    						} catch (UnsupportedAudioFileException e1) {
-    							// TODO Auto-generated catch block
-    							e1.printStackTrace();
-    						} catch (IOException e1) {
-    							// TODO Auto-generated catch block
-    							e1.printStackTrace();
-    						}
-                			JOptionPane.showMessageDialog(null, "Åä½ºÆ®°¡ ¼±ÅÃµÇÁö ¾Ê¾Ò½À´Ï´Ù.\nÃß°¡ ¿É¼ÇÀº Åä½ºÆ® ¼±ÅÃ ½Ã Ãß°¡ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-                			txt.setText("");
-                		}
-                		else {
-                			try {
-    							Play("sound/order.wav");
-    						} catch (LineUnavailableException e1) {
-    							// TODO Auto-generated catch block
-    							e1.printStackTrace();
-    						} catch (UnsupportedAudioFileException e1) {
-    							// TODO Auto-generated catch block
-    							e1.printStackTrace();
-    						} catch (IOException e1) {
-    							// TODO Auto-generated catch block
-    							e1.printStackTrace();
-    						}
-                			JOptionPane.showMessageDialog(null, txt.getText()+"ÃÑ ±İ¾× : "+total+"¿ø\n"+"ÁÖ¹®µÇ¾ú½À´Ï´Ù. \nÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.");
-                			total=0; txt.setText(""); model.setNumRows(0);
-                		}
-                	}
-            	}
-            	else
-            		JOptionPane.showMessageDialog(null, "¸Ş´º ¼±ÅÃ ´Ü°è·Î µ¹¾Æ°©´Ï´Ù.\n");
+        // ì£¼ë¬¸ë²„íŠ¼
+        order[2].addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int answer = JOptionPane.showConfirmDialog(null, "ì£¼ë¬¸í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "Order", JOptionPane.YES_NO_OPTION);
+                if (answer == JOptionPane.YES_OPTION) {
+                    if (total == 0) {
+                        try {
+                            Play("sound/error.wav");
+                        } catch (LineUnavailableException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        } catch (UnsupportedAudioFileException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        } catch (IOException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                        JOptionPane.showMessageDialog(null, "ì„ íƒ í•­ëª©ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+                    } else {
+                        for (int i = 0; i < table.getRowCount(); i++) {
+                            txt.append(table.getValueAt(i, 0) + " " + table.getValueAt(i, 1) + " X " + table.getValueAt(i, 2) + "ê°œ\n");
+                        }
+
+                        contents = txt.toString();
+                        if (!contents.contains("í† ìŠ¤íŠ¸") && contents.contains("ì¶”ê°€")) {
+                            try {
+                                Play("sound/error.wav");
+                            } catch (LineUnavailableException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            } catch (UnsupportedAudioFileException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            } catch (IOException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            }
+                            JOptionPane.showMessageDialog(null, "í† ìŠ¤íŠ¸ê°€ ì„ íƒë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\nì¶”ê°€ ì˜µì…˜ì€ í† ìŠ¤íŠ¸ ì„ íƒ ì‹œ ì¶”ê°€í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
+                            txt.setText("");
+                        } else {
+                            try {
+                                Play("sound/order.wav");
+                            } catch (LineUnavailableException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            } catch (UnsupportedAudioFileException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            } catch (IOException e1) {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            }
+                            JOptionPane.showMessageDialog(null, txt.getText() + "ì´ ê¸ˆì•¡ : " + total + "ì›\n" + "ì£¼ë¬¸ë˜ì—ˆìŠµë‹ˆë‹¤. \nì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.");
+                            total = 0;
+                            txt.setText("");
+                            model.setNumRows(0);
+                        }
+                    }
+                } else
+                    JOptionPane.showMessageDialog(null, "ë©”ë‰´ ì„ íƒ ë‹¨ê³„ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.\n");
 
                 for (int i = 0; i < menu.length; i++) {
                     num[i].setText("0");
                 }
             }
         });
-        
-	    
-	    
-	    for (int i = 0; i < menu.length; i++) {
+
+
+        for (int i = 0; i < menu.length; i++) {
             int j = i;
- 
+
             bt_menu[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     count = 0;
                 }
             });
- 
+
             minus[i].addActionListener(new ActionListener() {
- 
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (count > 0) {
@@ -316,9 +311,9 @@ public class Toast extends JFrame{
                     }
                 }
             });
-            
+
             plus[i].addActionListener(new ActionListener() {
- 
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     count = count + 1;
@@ -329,25 +324,25 @@ public class Toast extends JFrame{
                     }
                 }
             });
-            
+
             ok[i].addActionListener(new ActionListener() {
- 
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                   num[j].setText("0");
-                   total= total+price[j] * count;
- 
-                   String inputStr[] = new String [5];
-                   
-                   inputStr[0] = menu_txt[j];
-                   inputStr[1] = price[j]+"¿ø";
-                   inputStr[2] = ""+count;
-                   inputStr[3] = price[j] * count+"¿ø";
-                   inputStr[4] = total+"¿ø";
-                   model.addRow(inputStr);
-                   
-                   count=0;
-                   ok[j].setEnabled(false);
+                    num[j].setText("0");
+                    total = total + price[j] * count;
+
+                    String inputStr[] = new String[5];
+
+                    inputStr[0] = menu_txt[j];
+                    inputStr[1] = price[j] + "ì›";
+                    inputStr[2] = "" + count;
+                    inputStr[3] = price[j] * count + "ì›";
+                    inputStr[4] = total + "ì›";
+                    model.addRow(inputStr);
+
+                    count = 0;
+                    ok[j].setEnabled(false);
                 }
             });
         }
@@ -358,11 +353,11 @@ public class Toast extends JFrame{
         frame.add(CenterPanel, BorderLayout.CENTER);
         frame.add(SouthPanel, BorderLayout.SOUTH);
         frame.add(SelectPanel, BorderLayout.EAST);
-		frame.setSize(1170, 958);
-		frame.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
+        frame.setSize(1170, 958);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
         new Toast();
     }
 }
